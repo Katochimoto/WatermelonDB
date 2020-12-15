@@ -32,10 +32,10 @@ export default async function synchronize({
   // TODO: Wrap the three computionally intensive phases in `requestIdleCallback`
 
   // pull phase
-  const lastPulledAt = await getLastPulledAt(database)
+  let lastPulledAt = await getLastPulledAt(database)
   log && (log.lastPulledAt = lastPulledAt)
 
-  const { schemaVersion, migration, shouldSaveSchemaVersion } = await getMigrationInfo(
+  const migrationInfo = await getMigrationInfo(
     database,
     log,
     lastPulledAt,
@@ -43,7 +43,13 @@ export default async function synchronize({
   )
   log && (log.phase = 'ready to pull')
 
-  const saveRemoteChanges = async ({ changes, timestamp }) => {
+  const saveRemoteChanges = async ({
+    lastPulledAt,
+    changes,
+    timestamp,
+    schemaVersion,
+    shouldSaveSchemaVersion,
+  }) => {
     log && (log.newLastPulledAt = timestamp)
     log && (log.remoteChangeCount = changeSetCount(changes))
     log && (log.phase = 'pulled')
@@ -80,11 +86,11 @@ export default async function synchronize({
 
   const pullRemoteData = await pullChanges({
     lastPulledAt,
-    schemaVersion,
-    migration,
+    schemaVersion: migrationInfo.schemaVersion,
+    migration: migrationInfo.migration,
   })
 
-  await saveRemoteChanges(pullRemoteData)
+  await saveRemoteChanges(Object.assign({ lastPulledAt }, pullRemoteData, migrationInfo))
 
   // push phase
   log && (log.phase = 'ready to fetch local changes')
@@ -96,9 +102,10 @@ export default async function synchronize({
   if (!isChangeSetEmpty(localChanges.changes)) {
     log && (log.phase = 'ready to push')
 
+    lastPulledAt = pullRemoteData.timestamp
     const pushRemoteData = await pushChanges({
+      lastPulledAt,
       changes: localChanges.changes,
-      lastPulledAt: timestamp,
     })
 
     log && (log.phase = 'pushed')
@@ -108,7 +115,7 @@ export default async function synchronize({
     log && (log.phase = 'marked local changes as synced')
 
     if (pushRemoteData) {
-      await saveRemoteChanges(pushRemoteData)
+      await saveRemoteChanges(Object.assign({ lastPulledAt }, pushRemoteData))
     }
   }
 
