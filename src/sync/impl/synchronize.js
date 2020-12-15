@@ -43,42 +43,48 @@ export default async function synchronize({
   )
   log && (log.phase = 'ready to pull')
 
-  const { changes: remoteChanges, timestamp: newLastPulledAt } = await pullChanges({
+  const saveRemoteChanges = async ({ changes, timestamp }) => {
+    log && (log.newLastPulledAt = timestamp)
+    log && (log.remoteChangeCount = changeSetCount(changes))
+    log && (log.phase = 'pulled')
+
+    invariant(
+      typeof timestamp === 'number' && timestamp > 0,
+      `pullChanges() returned invalid timestamp ${timestamp}. timestamp must be a non-zero number`,
+    )
+
+    await database.action(async action => {
+      ensureSameDatabase(database, resetCount)
+      invariant(
+        lastPulledAt === (await getLastPulledAt(database)),
+        '[Sync] Concurrent synchronization is not allowed. More than one synchronize() call was running at the same time, and the later one was aborted before committing results to local database.',
+      )
+      await action.subAction(() =>
+        applyRemoteChanges(
+          database,
+          changes,
+          sendCreatedAsUpdated,
+          log,
+          conflictResolver,
+          _unsafeBatchPerCollection,
+        ),
+      )
+      log && (log.phase = 'applied remote changes')
+      await setLastPulledAt(database, timestamp)
+
+      if (shouldSaveSchemaVersion) {
+        await setLastPulledSchemaVersion(database, schemaVersion)
+      }
+    }, 'sync-synchronize-apply')
+  }
+
+  const pullRemoteData = await pullChanges({
     lastPulledAt,
     schemaVersion,
     migration,
   })
-  log && (log.newLastPulledAt = newLastPulledAt)
-  log && (log.remoteChangeCount = changeSetCount(remoteChanges))
-  log && (log.phase = 'pulled')
-  invariant(
-    typeof newLastPulledAt === 'number' && newLastPulledAt > 0,
-    `pullChanges() returned invalid timestamp ${newLastPulledAt}. timestamp must be a non-zero number`,
-  )
 
-  await database.action(async action => {
-    ensureSameDatabase(database, resetCount)
-    invariant(
-      lastPulledAt === (await getLastPulledAt(database)),
-      '[Sync] Concurrent synchronization is not allowed. More than one synchronize() call was running at the same time, and the later one was aborted before committing results to local database.',
-    )
-    await action.subAction(() =>
-      applyRemoteChanges(
-        database,
-        remoteChanges,
-        sendCreatedAsUpdated,
-        log,
-        conflictResolver,
-        _unsafeBatchPerCollection,
-      ),
-    )
-    log && (log.phase = 'applied remote changes')
-    await setLastPulledAt(database, newLastPulledAt)
-
-    if (shouldSaveSchemaVersion) {
-      await setLastPulledSchemaVersion(database, schemaVersion)
-    }
-  }, 'sync-synchronize-apply')
+  await saveRemoteChanges(pullRemoteData)
 
   // push phase
   log && (log.phase = 'ready to fetch local changes')
@@ -89,12 +95,21 @@ export default async function synchronize({
   ensureSameDatabase(database, resetCount)
   if (!isChangeSetEmpty(localChanges.changes)) {
     log && (log.phase = 'ready to push')
-    await pushChanges({ changes: localChanges.changes, lastPulledAt: newLastPulledAt })
+
+    const pushRemoteData = await pushChanges({
+      changes: localChanges.changes,
+      lastPulledAt: timestamp,
+    })
+
     log && (log.phase = 'pushed')
 
     ensureSameDatabase(database, resetCount)
     await markLocalChangesAsSynced(database, localChanges)
     log && (log.phase = 'marked local changes as synced')
+
+    if (pushRemoteData) {
+      await saveRemoteChanges(pushRemoteData)
+    }
   }
 
   log && (log.finishedAt = new Date())
