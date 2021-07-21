@@ -1,7 +1,7 @@
 import { AppRegistry, NativeModules } from 'react-native'
 
-import { Database } from '@nozbe/watermelondb'
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
+import { Database } from '@rikishi/watermelondb'
+import SQLiteAdapter from '@rikishi/watermelondb/adapters/sqlite'
 
 import { mySchema } from './src/models/schema'
 import Blog from './src/models/Blog'

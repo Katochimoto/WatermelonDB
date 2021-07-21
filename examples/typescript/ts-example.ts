@@ -1,8 +1,8 @@
 // tslint:disable: max-classes-per-file
-import { Model, Q, Query, Relation } from '@nozbe/watermelondb';
-import { action, children, field, lazy, relation } from '@nozbe/watermelondb/decorators';
-import { Associations } from '@nozbe/watermelondb/Model';
-import { setGenerator } from '@nozbe/watermelondb/utils/common/randomId';
+import { Model, Q, Query, Relation } from '@rikishi/watermelondb';
+import { action, children, field, lazy, relation } from '@rikishi/watermelondb/decorators';
+import { Associations } from '@rikishi/watermelondb/Model';
+import { setGenerator } from '@rikishi/watermelondb/utils/common/randomId';
 
 // Create an enum for all Table Names.
 // This will help in documenting where all exact table names need to be passed.

@@ -3,13 +3,13 @@
 First, add Watermelon to your project:
 
 ```bash
-yarn add @nozbe/watermelondb
+yarn add @rikishi/watermelondb
 yarn add @nozbe/with-observables
 ```
 or alternatively if you prefer npm:
 
 ```npm
-npm install @nozbe/watermelondb
+npm install @rikishi/watermelondb
 npm install @nozbe/with-observables
 ```
 
@@ -52,7 +52,7 @@ npm install @nozbe/with-observables
 
       - **Manually**
 
-         1. Open your project in Xcode, right click on **Libraries** in the Project Navigator on the left and click **Add Files to "Your Project Name"**. Look under `node_modules/@nozbe/watermelondb/native/ios` and select `WatermelonDB.xcodeproj`
+         1. Open your project in Xcode, right click on **Libraries** in the Project Navigator on the left and click **Add Files to "Your Project Name"**. Look under `node_modules/@rikishi/watermelondb/native/ios` and select `WatermelonDB.xcodeproj`
          2. Go to Project settings (top item in the Project navigator on the left), select your app name under **Targets** → **Build Phases** → **Link Binary With Libraries**, and add `libWatermelonDB.a`
 
          For more information about linking libraries manually, [see React Native documentation](https://facebook.github.io/react-native/docs/linking-libraries-ios).
@@ -62,7 +62,7 @@ npm install @nozbe/with-observables
           1. Add this to your CocoaPods (might not be needed if you're using autolinking):
 
               ```ruby
-              pod 'WatermelonDB', :path => '../node_modules/@nozbe/watermelondb'
+              pod 'WatermelonDB', :path => '../node_modules/@rikishi/watermelondb'
               ```
           2. Unfortunately, the build will fail due to an issue with React Native's Pods, so you need to modify this line:
 
@@ -86,7 +86,7 @@ npm install @nozbe/with-observables
    ```gradle
    include ':watermelondb'
    project(':watermelondb').projectDir =
-       new File(rootProject.projectDir, '../node_modules/@nozbe/watermelondb/native/android')
+       new File(rootProject.projectDir, '../node_modules/@rikishi/watermelondb/native/android')
    ```
 3. In `android/app/build.gradle`, add:
    ```gradle
@@ -223,7 +223,7 @@ If you want to use Web Worker for WatermelonDB (this has pros and cons, we recom
 Create `model/schema.js` in your project:
 
 ```js
-import { appSchema, tableSchema } from '@nozbe/watermelondb'
+import { appSchema, tableSchema } from '@rikishi/watermelondb'
 
 export default appSchema({
   version: 1,
@@ -236,8 +236,8 @@ export default appSchema({
 You'll need it for [the next step](./Schema.md). Now, in your `index.js`:
 
 ```js
-import { Database } from '@nozbe/watermelondb'
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
+import { Database } from '@rikishi/watermelondb'
+import SQLiteAdapter from '@rikishi/watermelondb/adapters/sqlite'
 
 import schema from './model/schema'
 // import Post from './model/Post' // ⬅️ You'll import your Models here
@@ -272,7 +272,7 @@ const database = new Database({
 The above will work on React Native (iOS/Android) and NodeJS. For the web, instead of `SQLiteAdapter` use `LokiJSAdapter`:
 
 ```js
-import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs'
+import LokiJSAdapter from '@rikishi/watermelondb/adapters/lokijs'
 
 const adapter = new LokiJSAdapter({
   schema,

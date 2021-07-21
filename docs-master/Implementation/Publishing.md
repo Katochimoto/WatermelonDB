@@ -12,7 +12,7 @@ yarn ci:check && yarn test:ios && yarn test:android && yarn swiftlint && yarn kt
 yarn build
 ```
 
-Then copy `dist/` and replace `app/node_modules/@nozbe/watermelondb` with it.
+Then copy `dist/` and replace `app/node_modules/@rikishi/watermelondb` with it.
 
 If a quick smoke test passes, proceed to publish.
 

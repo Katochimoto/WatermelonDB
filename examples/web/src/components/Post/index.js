@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withPropsOnChange, withHandlers } from 'recompose'
 
 import withObservables from '@nozbe/with-observables'
-import { withDatabase } from '@nozbe/watermelondb/DatabaseProvider'
+import { withDatabase } from '@rikishi/watermelondb/DatabaseProvider'
 
 import Comment from 'components/Comment'
 import Button from 'components/Button'

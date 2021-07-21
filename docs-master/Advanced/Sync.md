@@ -12,7 +12,7 @@ Note that Watermelon is only a local database — you need to **bring your own b
 To synchronize, you need to pass two functions, `pullChanges` and `pushChanges` that talk to your backend and are compatible with Watermelon Sync Protocol. The frontend code will look something like this:
 
 ```js
-import { synchronize } from '@nozbe/watermelondb/sync'
+import { synchronize } from '@rikishi/watermelondb/sync'
 
 async function mySync() {
   await synchronize({
@@ -131,7 +131,7 @@ You can add basic sync logs to the sync process by passing an empty object to `s
 
 ```js
 // Using built-in SyncLogger
-import SyncLogger from '@nozbe/watermelondb/sync/SyncLogger'
+import SyncLogger from '@rikishi/watermelondb/sync/SyncLogger'
 const logger = new SyncLogger(10 /* limit of sync logs to keep in memory */ )
 await synchronize({ database, log: logger.newLog(), ... })
 

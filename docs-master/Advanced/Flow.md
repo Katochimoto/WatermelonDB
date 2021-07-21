@@ -11,7 +11,7 @@ Add this to your `.flowconfig` file so that Flow can see Watermelon's types.
 ```ini
 [options]
 
-module.name_mapper='^@nozbe/watermelondb\(.*\)$' -> '<PROJECT_ROOT>/node_modules/@nozbe/watermelondb/src\1'
+module.name_mapper='^@rikishi/watermelondb\(.*\)$' -> '<PROJECT_ROOT>/node_modules/@rikishi/watermelondb/src\1'
 ```
 
 Note that this won't work if you put the entire `node_modules/` folder under the `[ignore]` section. In that case, change it to only ignore the specific node modules that throw errors in your app, so that Flow can scan Watermelon files.
@@ -40,7 +40,7 @@ We recommend defining symbols like this:
 // File: model/schema.js
 // @flow
 
-import { tableName, columnName, type TableName, appSchema, tableSchema } from '@nozbe/watermelondb'
+import { tableName, columnName, type TableName, appSchema, tableSchema } from '@rikishi/watermelondb'
 import type Comment from './Comment.js'
 
 export const Tables = {
@@ -75,8 +75,8 @@ And then using them like so:
 // File: model/Comment.js
 // @flow
 
-import { Model } from '@nozbe/watermelondb'
-import { text } from '@nozbe/watermelondb/decorators'
+import { Model } from '@rikishi/watermelondb'
+import { text } from '@rikishi/watermelondb/decorators'
 
 import { Tables, Columns } from './schema.js'
 
@@ -105,7 +105,7 @@ In general, we find that untyped string constants lead to bugs, and defining typ
 When using Flow, you define model associations like this:
 
 ```js
-import { Model, associations } from '@nozbe/watermelondb'
+import { Model, associations } from '@rikishi/watermelondb'
 import { Tables, Columns } from './schema.js'
 
 const Column = Columns.posts

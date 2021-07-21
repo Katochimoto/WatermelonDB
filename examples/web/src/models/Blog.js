@@ -1,5 +1,5 @@
-import { Model, Q } from '@nozbe/watermelondb'
-import { field, children, lazy, action } from '@nozbe/watermelondb/decorators'
+import { Model, Q } from '@rikishi/watermelondb'
+import { field, children, lazy, action } from '@rikishi/watermelondb/decorators'
 
 export default class Blog extends Model {
   static table = 'blogs'

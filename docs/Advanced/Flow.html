@@ -4,7 +4,7 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Flow - WatermelonDB documentation</title>
-        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -28,9 +28,9 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
+
+
     </head>
     <body class="light">
         <!-- Provide site root to javascript -->
@@ -86,7 +86,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
+
                 <div id="menu-bar" class="menu-bar">
                     <div id="menu-bar-sticky-container">
                         <div class="left-buttons">
@@ -103,11 +103,11 @@
                                 <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                                 <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                             </ul>
-                            
+
                             <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                                 <i class="fa fa-search"></i>
                             </button>
-                            
+
                         </div>
 
                         <h1 class="menu-title">WatermelonDB documentation</h1>
@@ -116,12 +116,12 @@
                             <a href="../print.html" title="Print this book" aria-label="Print this book">
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
-                            
+
                         </div>
                     </div>
                 </div>
 
-                
+
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -132,7 +132,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -152,7 +152,7 @@
 <p>Add this to your <code>.flowconfig</code> file so that Flow can see Watermelon's types.</p>
 <pre><code class="language-ini">[options]
 
-module.name_mapper='^@nozbe/watermelondb\(.*\)$' -&gt; '&lt;PROJECT_ROOT&gt;/node_modules/@nozbe/watermelondb/src\1'
+module.name_mapper='^@rikishi/watermelondb\(.*\)$' -&gt; '&lt;PROJECT_ROOT&gt;/node_modules/@rikishi/watermelondb/src\1'
 </code></pre>
 <p>Note that this won't work if you put the entire <code>node_modules/</code> folder under the <code>[ignore]</code> section. In that case, change it to only ignore the specific node modules that throw errors in your app, so that Flow can scan Watermelon files.</p>
 <h2><a class="header" href="#tables-and-columns" id="tables-and-columns">Tables and columns</a></h2>
@@ -170,7 +170,7 @@ module.name_mapper='^@nozbe/watermelondb\(.*\)$' -&gt; '&lt;PROJECT_ROOT&gt;/nod
 <pre><code class="language-js">// File: model/schema.js
 // @flow
 
-import { tableName, columnName, type TableName, appSchema, tableSchema } from '@nozbe/watermelondb'
+import { tableName, columnName, type TableName, appSchema, tableSchema } from '@rikishi/watermelondb'
 import type Comment from './Comment.js'
 
 export const Tables = {
@@ -202,8 +202,8 @@ export const appSchema = appSchema({
 <pre><code class="language-js">// File: model/Comment.js
 // @flow
 
-import { Model } from '@nozbe/watermelondb'
-import { text } from '@nozbe/watermelondb/decorators'
+import { Model } from '@rikishi/watermelondb'
+import { text } from '@rikishi/watermelondb/decorators'
 
 import { Tables, Columns } from './schema.js'
 
@@ -226,7 +226,7 @@ export default class Comment extends Model {
 <p>In general, we find that untyped string constants lead to bugs, and defining typed constants is a good practice.</p>
 <h3><a class="header" href="#associations" id="associations">associations</a></h3>
 <p>When using Flow, you define model associations like this:</p>
-<pre><code class="language-js">import { Model, associations } from '@nozbe/watermelondb'
+<pre><code class="language-js">import { Model, associations } from '@rikishi/watermelondb'
 import { Tables, Columns } from './schema.js'
 
 const Column = Columns.posts
@@ -259,17 +259,17 @@ Query&lt;Comment&gt; // a query that can fetch many Comments
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
+
                             <a rel="prev" href="../Advanced/AdvancedFields.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
+
+
                             <a rel="next" href="../Advanced/LocalStorage.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -277,41 +277,41 @@ Query&lt;Comment&gt; // a query that can fetch many Comments
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
+
                     <a href="../Advanced/AdvancedFields.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
+
+
                     <a href="../Advanced/LocalStorage.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
+
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
+
+
+
+
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
+
+
 
     </body>
 </html>

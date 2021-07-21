@@ -9,7 +9,7 @@ An **Action** is a function that can modify the database (create, update, and de
 To define it, just add a method to a `Model` class marked with the `@action` decorator
 
 ```js
-import { action } from '@nozbe/watermelondb/decorators'
+import { action } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...

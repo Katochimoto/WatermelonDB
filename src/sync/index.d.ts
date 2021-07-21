@@ -1,5 +1,5 @@
-declare module '@nozbe/watermelondb/sync' {
-  import { DirtyRaw, RecordId, TableName, Model, Database } from '@nozbe/watermelondb';
+declare module '@rikishi/watermelondb/sync' {
+  import { DirtyRaw, RecordId, TableName, Model, Database } from '@rikishi/watermelondb';
   export type Timestamp = number
 
   export type SyncTableChangeSet = {

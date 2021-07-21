@@ -4,9 +4,9 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>WatermelonDB documentation</title>
-        
+
         <meta name="robots" content="noindex" />
-        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -30,9 +30,9 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
+
+
     </head>
     <body class="light">
         <!-- Provide site root to javascript -->
@@ -88,7 +88,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
+
                 <div id="menu-bar" class="menu-bar">
                     <div id="menu-bar-sticky-container">
                         <div class="left-buttons">
@@ -105,11 +105,11 @@
                                 <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                                 <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                             </ul>
-                            
+
                             <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                                 <i class="fa fa-search"></i>
                             </button>
-                            
+
                         </div>
 
                         <h1 class="menu-title">WatermelonDB documentation</h1>
@@ -118,12 +118,12 @@
                             <a href="print.html" title="Print this book" aria-label="Print this book">
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
-                            
+
                         </div>
                     </div>
                 </div>
 
-                
+
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -134,7 +134,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -164,8 +164,8 @@
 <a href="https://travis-ci.com/Nozbe/WatermelonDB">
     <img src="https://api.travis-ci.com/Nozbe/WatermelonDB.svg?branch=master" alt="CI Status">
   </a>
-<a href="https://www.npmjs.com/package/@nozbe/watermelondb">
-    <img src="https://img.shields.io/npm/v/@nozbe/watermelondb.svg" alt="npm">
+<a href="https://www.npmjs.com/package/@rikishi/watermelondb">
+    <img src="https://img.shields.io/npm/v/@rikishi/watermelondb.svg" alt="npm">
   </a>
 </p>
 <table><thead><tr><th></th><th>WatermelonDB</th></tr></thead><tbody>
@@ -331,11 +331,11 @@ yarn
 <p>Learn the basics of how to use WatermelonDB</p>
 <h1><a class="header" href="#installation" id="installation">Installation</a></h1>
 <p>First, add Watermelon to your project:</p>
-<pre><code class="language-bash">yarn add @nozbe/watermelondb
+<pre><code class="language-bash">yarn add @rikishi/watermelondb
 yarn add @nozbe/with-observables
 </code></pre>
 <p>or alternatively if you prefer npm:</p>
-<pre><code class="language-npm">npm install @nozbe/watermelondb
+<pre><code class="language-npm">npm install @rikishi/watermelondb
 npm install @nozbe/with-observables
 </code></pre>
 <h2><a class="header" href="#react-native-setup" id="react-native-setup">React Native setup</a></h2>
@@ -384,7 +384,7 @@ npm install @nozbe/with-observables
 <li>
 <p><strong>Manually</strong></p>
 <ol>
-<li>Open your project in Xcode, right click on <strong>Libraries</strong> in the Project Navigator on the left and click <strong>Add Files to &quot;Your Project Name&quot;</strong>. Look under <code>node_modules/@nozbe/watermelondb/native/ios</code> and select <code>WatermelonDB.xcodeproj</code></li>
+<li>Open your project in Xcode, right click on <strong>Libraries</strong> in the Project Navigator on the left and click <strong>Add Files to &quot;Your Project Name&quot;</strong>. Look under <code>node_modules/@rikishi/watermelondb/native/ios</code> and select <code>WatermelonDB.xcodeproj</code></li>
 <li>Go to Project settings (top item in the Project navigator on the left), select your app name under <strong>Targets</strong> → <strong>Build Phases</strong> → <strong>Link Binary With Libraries</strong>, and add <code>libWatermelonDB.a</code></li>
 </ol>
 <p>For more information about linking libraries manually, <a href="https://facebook.github.io/react-native/docs/linking-libraries-ios">see React Native documentation</a>.</p>
@@ -394,7 +394,7 @@ npm install @nozbe/with-observables
 <ol>
 <li>
 <p>Add this to your CocoaPods (might not be needed if you're using autolinking):</p>
-<pre><code class="language-ruby">pod 'WatermelonDB', :path =&gt; '../node_modules/@nozbe/watermelondb'
+<pre><code class="language-ruby">pod 'WatermelonDB', :path =&gt; '../node_modules/@rikishi/watermelondb'
 </code></pre>
 </li>
 <li>
@@ -421,7 +421,7 @@ pod 'React-jsi', :path =&gt; '../node_modules/react-native/ReactCommon/jsi', :mo
 <p>In <code>android/settings.gradle</code>, add:</p>
 <pre><code class="language-gradle">include ':watermelondb'
 project(':watermelondb').projectDir =
-    new File(rootProject.projectDir, '../node_modules/@nozbe/watermelondb/native/android')
+    new File(rootProject.projectDir, '../node_modules/@rikishi/watermelondb/native/android')
 </code></pre>
 </li>
 <li>
@@ -551,7 +551,7 @@ npm install -D @babel/plugin-transform-runtime
 </ol>
 <h2><a class="header" href="#set-up-database" id="set-up-database">Set up <code>Database</code></a></h2>
 <p>Create <code>model/schema.js</code> in your project:</p>
-<pre><code class="language-js">import { appSchema, tableSchema } from '@nozbe/watermelondb'
+<pre><code class="language-js">import { appSchema, tableSchema } from '@rikishi/watermelondb'
 
 export default appSchema({
   version: 1,
@@ -561,8 +561,8 @@ export default appSchema({
 })
 </code></pre>
 <p>You'll need it for <a href="./Schema.html">the next step</a>. Now, in your <code>index.js</code>:</p>
-<pre><code class="language-js">import { Database } from '@nozbe/watermelondb'
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
+<pre><code class="language-js">import { Database } from '@rikishi/watermelondb'
+import SQLiteAdapter from '@rikishi/watermelondb/adapters/sqlite'
 
 import schema from './model/schema'
 // import Post from './model/Post' // ⬅️ You'll import your Models here
@@ -586,7 +586,7 @@ const database = new Database({
 })
 </code></pre>
 <p>The above will work on React Native (iOS/Android) and NodeJS. For the web, instead of <code>SQLiteAdapter</code> use <code>LokiJSAdapter</code>:</p>
-<pre><code class="language-js">import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs'
+<pre><code class="language-js">import LokiJSAdapter from '@rikishi/watermelondb/adapters/lokijs'
 
 const adapter = new LokiJSAdapter({
   schema,
@@ -616,7 +616,7 @@ const adapter = new LokiJSAdapter({
 <h2><a class="header" href="#defining-a-schema" id="defining-a-schema">Defining a Schema</a></h2>
 <p>Say you want Models <code>Post</code>, <code>Comment</code> in your app. For each of those Models, you define a table. And for every field of a Model (e.g. name of the blog post, author of the comment) you define a column. For example:</p>
 <pre><code class="language-js">// model/schema.js
-import { appSchema, tableSchema } from '@nozbe/watermelondb'
+import { appSchema, tableSchema } from '@rikishi/watermelondb'
 
 export const mySchema = appSchema({
   version: 1,
@@ -697,7 +697,7 @@ and when to <code>appSchema</code> - the entire schema SQL.</p>
 <h2><a class="header" href="#create-a-model" id="create-a-model">Create a Model</a></h2>
 <p>Let's define the <code>Post</code> model:</p>
 <pre><code class="language-js">// model/Post.js
-import { Model } from '@nozbe/watermelondb'
+import { Model } from '@rikishi/watermelondb'
 
 export default class Post extends Model {
   static table = 'posts'
@@ -733,7 +733,7 @@ class Comment extends Model {
 <p>On the &quot;parent&quot; side (<code>posts</code>) you define an equivalent <code>has_many</code> association and pass the same column name (here named <code>foreignKey</code>).</p>
 <h2><a class="header" href="#add-fields" id="add-fields">Add fields</a></h2>
 <p>Next, define the Model's <em>fields</em> (properties). Those correspond to <a href="./Schema.html">table columns</a> defined earlier in the schema.</p>
-<pre><code class="language-js">import { field } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { field } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   static table = 'posts'
@@ -751,7 +751,7 @@ class Post extends Model {
 <p><strong>Note:</strong> Why do I have to type the field/column name twice? The database convention is to use <code>snake_case</code> for names, and the JavaScript convention is to use camelCase. So for any multi-word name, the two differ. Also, for resiliency, we believe it's better to be explicit, because over time, you might want to refactor how you name your JavaScript field names, but column names must stay the same for backward compatibility.</p>
 <h3><a class="header" href="#date-fields" id="date-fields">Date fields</a></h3>
 <p>For date fields, use <code>@date</code> instead of <code>@field</code>. This will return a JavaScript <code>Date</code> object (instead of Unix timestamp integer).</p>
-<pre><code class="language-js">import { date } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { date } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -761,7 +761,7 @@ class Post extends Model {
 <h2><a class="header" href="#relation-fields" id="relation-fields">Relation fields</a></h2>
 <h3><a class="header" href="#to-one-relation" id="to-one-relation">To-one relation</a></h3>
 <p>To point to a related record, e.g. <code>Post</code> a <code>Comment</code> belongs to, or author (<code>User</code>) of a <code>Comment</code>, use <code>@relation</code>:</p>
-<pre><code class="language-js">import { relation } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { relation } from '@rikishi/watermelondb/decorators'
 
 class Comment extends Model {
   // ...
@@ -772,7 +772,7 @@ class Comment extends Model {
 <p><strong>➡️ Learn more:</strong> <a href="./Relation.html">Relation API</a></p>
 <h3><a class="header" href="#children-to-many-relation" id="children-to-many-relation">Children (To-Many relation)</a></h3>
 <p>To point to a list of records that belong to this Model, e.g. all <code>Comment</code>s that belong to a <code>Post</code>, you can define a simple <code>Query</code> using <code>@children</code>:</p>
-<pre><code class="language-js">import { children } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { children } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   static table = 'posts'
@@ -1075,7 +1075,7 @@ const enhanceAuthorContact = withObservables(['author'], ({author}) =&gt; ({
 </code></pre>
 <h2><a class="header" href="#database-provider" id="database-provider">Database Provider</a></h2>
 <p>To prevent prop drilling you can utilise the Database Provider and the <code>withDatabase</code> Higher-Order Component.</p>
-<pre><code class="language-jsx">import DatabaseProvider from '@nozbe/watermelondb/DatabaseProvider'
+<pre><code class="language-jsx">import DatabaseProvider from '@rikishi/watermelondb/DatabaseProvider'
 
 // ...
 
@@ -1093,7 +1093,7 @@ render(
 
 </code></pre>
 <p>To consume the database in your components you just wrap your component like so:</p>
-<pre><code class="language-jsx">import { withDatabase } from '@nozbe/watermelondb/DatabaseProvider'
+<pre><code class="language-jsx">import { withDatabase } from '@rikishi/watermelondb/DatabaseProvider'
 
 // ...
 
@@ -1105,7 +1105,7 @@ export default withDatabase(withObservables([], ({ database }) =&gt; ({
 <p>The database prop in the <code>withObservables</code> Higher-Order Component is provided by the database provider.</p>
 <h3><a class="header" href="#usedatabase" id="usedatabase"><code>useDatabase</code></a></h3>
 <p>You can also consume <code>Database</code> object using React Hooks syntax:</p>
-<pre><code class="language-js">import { useDatabase } from '@nozbe/watermelondb/hooks'
+<pre><code class="language-js">import { useDatabase } from '@rikishi/watermelondb/hooks'
 
 const Component = () =&gt; {
    const database = useDatabase()
@@ -1133,7 +1133,7 @@ const Component = () =&gt; {
 <p><strong>➡️ Learn more:</strong> <a href="./Model.html">Defining Models</a></p>
 <h3><a class="header" href="#extended-query" id="extended-query">Extended Query</a></h3>
 <p>To <strong>narrow down</strong> a <code>Query</code> (add <a href="#query-conditions">extra conditions</a> to an existing Query), use <code>.extend()</code>:</p>
-<pre><code class="language-js">import { children, lazy } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { children, lazy } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -1170,7 +1170,7 @@ const comments = await post.comments
 const verifiedCommentCount = await post.verifiedComments.count
 </code></pre>
 <h2><a class="header" href="#query-conditions" id="query-conditions">Query conditions</a></h2>
-<pre><code class="language-js">import { Q } from '@nozbe/watermelondb'
+<pre><code class="language-js">import { Q } from '@rikishi/watermelondb'
 // ...
 commentCollection.query(
   Q.where('is_verified', true)
@@ -1398,7 +1398,7 @@ commentsCollection.query(
 </li>
 <li>
 <p>A <code>@relation</code> field <a href="./Model.html">defined on a <code>Model</code></a> class:</p>
-<pre><code class="language-js">import { relation } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { relation } from '@rikishi/watermelondb/decorators'
 
 class Comment extends Model {
   // ...
@@ -1449,7 +1449,7 @@ const author = await comment.author
 <h2><a class="header" href="#advanced-relations" id="advanced-relations">Advanced relations</a></h2>
 <h3><a class="header" href="#immutablerelation" id="immutablerelation">immutableRelation</a></h3>
 <p>If you have a relation that cannot change (for example, a comment can't change its author), you can use <code>@immutableRelation</code> for extra protection and performance:</p>
-<pre><code class="language-js">import { immutableRelation } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { immutableRelation } from '@rikishi/watermelondb/decorators'
 
 class Comment extends Model {
   // ...
@@ -1465,7 +1465,7 @@ class Comment extends Model {
 <li>Create belongs_to association on <code>PostAuthor</code> pointing to both <code>User</code> and <code>Post</code></li>
 <li>Retrieve all <code>Posts</code> for a user by defining a query that uses the pivot <code>PostAuthor</code> to infer the <code>Post</code>s that were authored by the User.</li>
 </ol>
-<pre><code class="language-js">import {lazy } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import {lazy } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   static table = 'posts'
@@ -1479,7 +1479,7 @@ class Post extends Model {
     .query(Q.on('post_authors', 'post_id', this.id));
 }
 </code></pre>
-<pre><code class="language-js">import { field } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { field } from '@rikishi/watermelondb/decorators'
 
 class PostAuthor extends Model {
   static table = 'post_authors'
@@ -1492,7 +1492,7 @@ class PostAuthor extends Model {
 }
 
 </code></pre>
-<pre><code class="language-js">import {lazy } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import {lazy } from '@rikishi/watermelondb/decorators'
 
 class User extends Model {
   static table = 'users'
@@ -1519,7 +1519,7 @@ class User extends Model {
 <h2><a class="header" href="#defining-explicit-actions" id="defining-explicit-actions">Defining explicit Actions</a></h2>
 <p>An <strong>Action</strong> is a function that can modify the database (create, update, and delete records).</p>
 <p>To define it, just add a method to a <code>Model</code> class marked with the <code>@action</code> decorator</p>
-<pre><code class="language-js">import { action } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { action } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -1680,7 +1680,7 @@ await comment.markAsSpam()
 <p>Add a new file for migrations:</p>
 <pre><code class="language-js">// app/model/migrations.js
 
-import { schemaMigrations } from '@nozbe/watermelondb/Schema/migrations'
+import { schemaMigrations } from '@rikishi/watermelondb/Schema/migrations'
 
 export default schemaMigrations({
   migrations: [
@@ -1708,7 +1708,7 @@ const adapter = new SQLiteAdapter({
 <p>Don't change the schema file yet!</p>
 <pre><code class="language-js">// app/model/migrations.js
 
-import { schemaMigrations, createTable } from '@nozbe/watermelondb/Schema/migrations'
+import { schemaMigrations, createTable } from '@rikishi/watermelondb/Schema/migrations'
 
 export default schemaMigrations({
   migrations: [
@@ -1841,7 +1841,7 @@ export default appSchema({
 </ul>
 <h2><a class="header" href="#using-synchronize-in-your-app" id="using-synchronize-in-your-app">Using <code>synchronize()</code> in your app</a></h2>
 <p>To synchronize, you need to pass two functions, <code>pullChanges</code> and <code>pushChanges</code> that talk to your backend and are compatible with Watermelon Sync Protocol. The frontend code will look something like this:</p>
-<pre><code class="language-js">import { synchronize } from '@nozbe/watermelondb/sync'
+<pre><code class="language-js">import { synchronize } from '@rikishi/watermelondb/sync'
 
 async function mySync() {
   await synchronize({
@@ -2193,7 +2193,7 @@ This shape MAY be different if negotiated with the frontend (however, frontend-s
 }),
 </code></pre>
 <p><strong>Step 2:</strong> Add this to the Model definition:</p>
-<pre><code class="language-js">import { date, readonly } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { date, readonly } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -2208,7 +2208,7 @@ class Post extends Model {
 <h1><a class="header" href="#advanced-fields-1" id="advanced-fields-1">Advanced Fields</a></h1>
 <h2><a class="header" href="#text" id="text"><code>@text</code></a></h2>
 <p>You can use <code>@text</code> instead of <code>@field</code> to enable user text sanitization. When setting a new value on a <code>@text</code> field, excess whitespace will be trimmed from both ends from the string.</p>
-<pre><code class="language-js">import { text } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { text } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -2227,7 +2227,7 @@ class Post extends Model {
 })
 </code></pre>
 <p>Then in the Model definition:</p>
-<pre><code class="language-js">import { json } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { json } from '@rikishi/watermelondb/decorators'
 
 class Comment extends Model {
   // ...
@@ -2255,7 +2255,7 @@ class Comment extends Model {
 <p>Only use JSON fields when you need the flexibility of complex freeform data, or the speed of having metadata without querying another table, and you are sure that you won't need to query by those metadata.</p>
 <h2><a class="header" href="#nochange" id="nochange"><code>@nochange</code></a></h2>
 <p>For extra protection, you can mark fields as <code>@nochange</code> to ensure they can't be modified. Always put <code>@nochange</code> before <code>@field</code> / <code>@date</code> / <code>@text</code></p>
-<pre><code class="language-js">import { field, nochange } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { field, nochange } from '@rikishi/watermelondb/decorators'
 
 class User extends Model {
   // ...
@@ -2278,7 +2278,7 @@ class User extends Model {
 <p>And in the <code>render</code> method, if <code>props.commentCount &gt; 10</code>, show the badge.</p>
 <p>Another way is to define an observable property on the Model layer, like so:</p>
 <pre><code class="language-js">import { distinctUntilChanged, map as map$ } from 'rxjs/operators'
-import { lazy } from '@nozbe/watermelondb/decorators'
+import { lazy } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   @lazy isPopular = this.comments.observeCount().pipe(
@@ -2302,7 +2302,7 @@ class Post extends Model {
 <p>Let's make this example more complicated. Say the post is <strong>always</strong> popular if it's marked as starred. So if <code>post.isStarred</code>, then we don't have to do unnecessary work of fetching comment count:</p>
 <pre><code class="language-js">import { of as of$ } from 'rxjs/observable/of'
 import { distinctUntilChanged, map as map$ } from 'rxjs/operators'
-import { lazy } from '@nozbe/watermelondb/decorators'
+import { lazy } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   @lazy isPopular = this.observe().pipe(
@@ -2330,7 +2330,7 @@ class Post extends Model {
 <p>Add this to your <code>.flowconfig</code> file so that Flow can see Watermelon's types.</p>
 <pre><code class="language-ini">[options]
 
-module.name_mapper='^@nozbe/watermelondb\(.*\)$' -&gt; '&lt;PROJECT_ROOT&gt;/node_modules/@nozbe/watermelondb/src\1'
+module.name_mapper='^@rikishi/watermelondb\(.*\)$' -&gt; '&lt;PROJECT_ROOT&gt;/node_modules/@rikishi/watermelondb/src\1'
 </code></pre>
 <p>Note that this won't work if you put the entire <code>node_modules/</code> folder under the <code>[ignore]</code> section. In that case, change it to only ignore the specific node modules that throw errors in your app, so that Flow can scan Watermelon files.</p>
 <h2><a class="header" href="#tables-and-columns" id="tables-and-columns">Tables and columns</a></h2>
@@ -2348,7 +2348,7 @@ module.name_mapper='^@nozbe/watermelondb\(.*\)$' -&gt; '&lt;PROJECT_ROOT&gt;/nod
 <pre><code class="language-js">// File: model/schema.js
 // @flow
 
-import { tableName, columnName, type TableName, appSchema, tableSchema } from '@nozbe/watermelondb'
+import { tableName, columnName, type TableName, appSchema, tableSchema } from '@rikishi/watermelondb'
 import type Comment from './Comment.js'
 
 export const Tables = {
@@ -2380,8 +2380,8 @@ export const appSchema = appSchema({
 <pre><code class="language-js">// File: model/Comment.js
 // @flow
 
-import { Model } from '@nozbe/watermelondb'
-import { text } from '@nozbe/watermelondb/decorators'
+import { Model } from '@rikishi/watermelondb'
+import { text } from '@rikishi/watermelondb/decorators'
 
 import { Tables, Columns } from './schema.js'
 
@@ -2404,7 +2404,7 @@ export default class Comment extends Model {
 <p>In general, we find that untyped string constants lead to bugs, and defining typed constants is a good practice.</p>
 <h3><a class="header" href="#associations-1" id="associations-1">associations</a></h3>
 <p>When using Flow, you define model associations like this:</p>
-<pre><code class="language-js">import { Model, associations } from '@nozbe/watermelondb'
+<pre><code class="language-js">import { Model, associations } from '@rikishi/watermelondb'
 import { Tables, Columns } from './schema.js'
 
 const Column = Columns.posts
@@ -2752,7 +2752,7 @@ rm -fr watermelondb
 ln -s path-to-watermelondb/dev watermelondb
 </code></pre>
 <p><strong>This will work in Webpack but not in Metro</strong> (React Native). Metro doesn't follow symlinks. Instead, you can compile WatermelonDB directly to your project:</p>
-<pre><code class="language-bash">DEV_PATH=&quot;/path/to/your/app/node_modules/@nozbe/watermelondb&quot; yarn dev
+<pre><code class="language-bash">DEV_PATH=&quot;/path/to/your/app/node_modules/@rikishi/watermelondb&quot; yarn dev
 </code></pre>
 <h3><a class="header" href="#running-tests" id="running-tests">Running tests</a></h3>
 <p>This runs Jest, ESLint and Flow:</p>
@@ -3028,7 +3028,7 @@ Note that this only works when <code>useWebWorker: false</code></li>
 <li>[Model] Added experimental <code>model.experimentalSubscribe((isDeleted) =&gt; { ... })</code> method as a vanilla JS alternative to Rx based <code>model.observe()</code>. Unlike the latter, it does not notify the subscriber immediately upon subscription.</li>
 <li>[Collection] Added internal <code>collection.experimentalSubscribe((changeSet) =&gt; { ... })</code> method as a vanilla JS alternative to Rx based <code>collection.changes</code> (you probably shouldn't be using this API anyway)</li>
 <li>[Database] Added experimental <code>database.experimentalSubscribe(['table1', 'table2'], () =&gt; { ... })</code> method as a vanilla JS alternative to Rx-based <code>database.withChangesForTables()</code>. Unlike the latter, <code>experimentalSubscribe</code> notifies the subscriber only once after a batch that makes a change in multiple collections subscribed to. It also doesn't notify the subscriber immediately upon subscription, and doesn't send details about the changes, only a signal.</li>
-<li>Added <code>experimentalDisableObserveCountThrottling()</code> to <code>@nozbe/watermelondb/observation/observeCount</code> that globally disables count observation throttling. We think that throttling on WatermelonDB level is not a good feature and will be removed in a future release - and will be better implemented on app level if necessary</li>
+<li>Added <code>experimentalDisableObserveCountThrottling()</code> to <code>@rikishi/watermelondb/observation/observeCount</code> that globally disables count observation throttling. We think that throttling on WatermelonDB level is not a good feature and will be removed in a future release - and will be better implemented on app level if necessary</li>
 <li>[Query] Added experimental <code>query.experimentalSubscribe(records =&gt; { ... })</code>, <code>query.experimentalSubscribeWithColumns(['col1', 'col2'], records =&gt; { ... })</code>, and <code>query.experimentalSubscribeToCount(count =&gt; { ... })</code> methods</li>
 </ul>
 <h2><a class="header" href="#015---2019-11-08" id="015---2019-11-08">0.15 - 2019-11-08</a></h2>
@@ -3181,7 +3181,7 @@ could be a breaking change if you rely on it always being called</li>
 marked as changed if the field's value is the same. This is meant to improve performance and avoid
 unnecessary code in the app. ⚠️ Note that this could be a breaking change if you rely on the old
 behavior. For now you can import <code>experimentalSetOnlyMarkAsChangedIfDiffers</code> from
-<code>@nozbe/watermelondb/Model/index</code> and call if with <code>(false)</code> to bring the old behavior back, but
+<code>@rikishi/watermelondb/Model/index</code> and call if with <code>(false)</code> to bring the old behavior back, but
 this will be removed in the later version -- create a new issue explaining why you need this</li>
 <li>[Sync] Small perf improvements</li>
 </ul>
@@ -3193,7 +3193,7 @@ this will be removed in the later version -- create a new issue explaining why y
 <h3><a class="header" href="#changes-6" id="changes-6">Changes</a></h3>
 <ul>
 <li>[Database] You can now update the random id schema by importing
-<code>import { setGenerator } from '@nozbe/watermelondb/utils/common/randomId'</code> and then calling <code>setGenerator(newGenenerator)</code>.
+<code>import { setGenerator } from '@rikishi/watermelondb/utils/common/randomId'</code> and then calling <code>setGenerator(newGenenerator)</code>.
 This allows WatermelonDB to create specific IDs for example if your backend uses UUIDs.</li>
 <li>[Typescript] Type improvements to SQLiteAdapter and Database</li>
 <li>[Tests] remove cleanup for react-hooks-testing-library@0.5.0 compatibility</li>
@@ -3239,7 +3239,7 @@ See Sync documentation for more details.</li>
 <h3><a class="header" href="#added" id="added">Added</a></h3>
 <ul>
 <li>[Hooks] new <code>useDatabase</code> hook for consuming the Database Context:
-<pre><code class="language-js">import { useDatabase } from '@nozbe/watermelondb/hooks';
+<pre><code class="language-js">import { useDatabase } from '@rikishi/watermelondb/hooks';
 const Component = () =&gt; {
    const database = useDatabase();
 }
@@ -3361,7 +3361,7 @@ resolving conflicts, finding local changes, and marking them as synced) is done 
 <h2><a class="header" href="#062---2018-10-04" id="062---2018-10-04">0.6.2 - 2018-10-04</a></h2>
 <h3><a class="header" href="#deprecations-1" id="deprecations-1">Deprecations</a></h3>
 <ul>
-<li>The <code>@nozbe/watermelondb/babel/cjs</code> / <code>@nozbe/watermelondb/babel/esm</code> Babel plugin that ships with Watermelon is deprecated and no longer necessary. Delete it from your Babel config as it will be removed in a future update</li>
+<li>The <code>@rikishi/watermelondb/babel/cjs</code> / <code>@rikishi/watermelondb/babel/esm</code> Babel plugin that ships with Watermelon is deprecated and no longer necessary. Delete it from your Babel config as it will be removed in a future update</li>
 </ul>
 <h3><a class="header" href="#refactoring" id="refactoring">Refactoring</a></h3>
 <ul>
@@ -3395,9 +3395,9 @@ resolving conflicts, finding local changes, and marking them as synced) is done 
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
 
-                        
+
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -3405,41 +3405,41 @@ resolving conflicts, finding local changes, and marking them as synced) is done 
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
 
-                
+
+
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
+
+
+
+
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+
 
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
-        
+
+
+
         <script type="text/javascript">
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
         </script>
-        
-        
+
+
 
     </body>
 </html>

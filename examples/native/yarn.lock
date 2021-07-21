@@ -663,9 +663,9 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@nozbe/watermelondb@^0.15.1":
+"@rikishi/watermelondb@^0.15.1":
   version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@nozbe/watermelondb/-/watermelondb-0.15.1.tgz#5129976bae4dc0ccf57d5534c76f3f4eb5ce9245"
+  resolved "https://registry.yarnpkg.com/@rikishi/watermelondb/-/watermelondb-0.15.1.tgz#5129976bae4dc0ccf57d5534c76f3f4eb5ce9245"
   integrity sha512-Fot258CCgwfBPkczliA//B+U/objd0PmEo2yT3H4fKWtorhYAr8FsgOSElw+c+ua6MSOfvgLg3Nz4RvIcgVcdA==
   dependencies:
     lodash.clonedeep "^4.5.0"

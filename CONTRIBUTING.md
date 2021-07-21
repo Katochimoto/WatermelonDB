@@ -48,7 +48,7 @@ ln -s path-to-watermelondb/dev watermelondb
 **This will work in Webpack but not in Metro** (React Native). Metro doesn't follow symlinks. Instead, you can compile WatermelonDB directly to your project:
 
 ```bash
-DEV_PATH="/path/to/your/app/node_modules/@nozbe/watermelondb" yarn dev
+DEV_PATH="/path/to/your/app/node_modules/@rikishi/watermelondb" yarn dev
 ```
 
 ### Running tests

@@ -1,8 +1,8 @@
 import React from 'react'
 import { compose, withStateHandlers, withHandlers } from 'recompose'
-import { Q } from '@nozbe/watermelondb'
+import { Q } from '@rikishi/watermelondb'
 import withObservables from '@nozbe/with-observables'
-import { withDatabase } from '@nozbe/watermelondb/DatabaseProvider'
+import { withDatabase } from '@rikishi/watermelondb/DatabaseProvider'
 
 import ListItem from 'components/ListItem'
 

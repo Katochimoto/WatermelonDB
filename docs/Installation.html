@@ -4,7 +4,7 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Installation - WatermelonDB documentation</title>
-        
+
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -28,9 +28,9 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
+
+
     </head>
     <body class="light">
         <!-- Provide site root to javascript -->
@@ -86,7 +86,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
+
                 <div id="menu-bar" class="menu-bar">
                     <div id="menu-bar-sticky-container">
                         <div class="left-buttons">
@@ -103,11 +103,11 @@
                                 <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                                 <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                             </ul>
-                            
+
                             <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                                 <i class="fa fa-search"></i>
                             </button>
-                            
+
                         </div>
 
                         <h1 class="menu-title">WatermelonDB documentation</h1>
@@ -116,12 +116,12 @@
                             <a href="print.html" title="Print this book" aria-label="Print this book">
                                 <i id="print-button" class="fa fa-print"></i>
                             </a>
-                            
+
                         </div>
                     </div>
                 </div>
 
-                
+
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -132,7 +132,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -147,11 +147,11 @@
                     <main>
                         <h1><a class="header" href="#installation" id="installation">Installation</a></h1>
 <p>First, add Watermelon to your project:</p>
-<pre><code class="language-bash">yarn add @nozbe/watermelondb
+<pre><code class="language-bash">yarn add @rikishi/watermelondb
 yarn add @nozbe/with-observables
 </code></pre>
 <p>or alternatively if you prefer npm:</p>
-<pre><code class="language-npm">npm install @nozbe/watermelondb
+<pre><code class="language-npm">npm install @rikishi/watermelondb
 npm install @nozbe/with-observables
 </code></pre>
 <h2><a class="header" href="#react-native-setup" id="react-native-setup">React Native setup</a></h2>
@@ -200,7 +200,7 @@ npm install @nozbe/with-observables
 <li>
 <p><strong>Manually</strong></p>
 <ol>
-<li>Open your project in Xcode, right click on <strong>Libraries</strong> in the Project Navigator on the left and click <strong>Add Files to &quot;Your Project Name&quot;</strong>. Look under <code>node_modules/@nozbe/watermelondb/native/ios</code> and select <code>WatermelonDB.xcodeproj</code></li>
+<li>Open your project in Xcode, right click on <strong>Libraries</strong> in the Project Navigator on the left and click <strong>Add Files to &quot;Your Project Name&quot;</strong>. Look under <code>node_modules/@rikishi/watermelondb/native/ios</code> and select <code>WatermelonDB.xcodeproj</code></li>
 <li>Go to Project settings (top item in the Project navigator on the left), select your app name under <strong>Targets</strong> → <strong>Build Phases</strong> → <strong>Link Binary With Libraries</strong>, and add <code>libWatermelonDB.a</code></li>
 </ol>
 <p>For more information about linking libraries manually, <a href="https://facebook.github.io/react-native/docs/linking-libraries-ios">see React Native documentation</a>.</p>
@@ -210,7 +210,7 @@ npm install @nozbe/with-observables
 <ol>
 <li>
 <p>Add this to your CocoaPods (might not be needed if you're using autolinking):</p>
-<pre><code class="language-ruby">pod 'WatermelonDB', :path =&gt; '../node_modules/@nozbe/watermelondb'
+<pre><code class="language-ruby">pod 'WatermelonDB', :path =&gt; '../node_modules/@rikishi/watermelondb'
 </code></pre>
 </li>
 <li>
@@ -237,7 +237,7 @@ pod 'React-jsi', :path =&gt; '../node_modules/react-native/ReactCommon/jsi', :mo
 <p>In <code>android/settings.gradle</code>, add:</p>
 <pre><code class="language-gradle">include ':watermelondb'
 project(':watermelondb').projectDir =
-    new File(rootProject.projectDir, '../node_modules/@nozbe/watermelondb/native/android')
+    new File(rootProject.projectDir, '../node_modules/@rikishi/watermelondb/native/android')
 </code></pre>
 </li>
 <li>
@@ -367,7 +367,7 @@ npm install -D @babel/plugin-transform-runtime
 </ol>
 <h2><a class="header" href="#set-up-database" id="set-up-database">Set up <code>Database</code></a></h2>
 <p>Create <code>model/schema.js</code> in your project:</p>
-<pre><code class="language-js">import { appSchema, tableSchema } from '@nozbe/watermelondb'
+<pre><code class="language-js">import { appSchema, tableSchema } from '@rikishi/watermelondb'
 
 export default appSchema({
   version: 1,
@@ -377,8 +377,8 @@ export default appSchema({
 })
 </code></pre>
 <p>You'll need it for <a href="./Schema.html">the next step</a>. Now, in your <code>index.js</code>:</p>
-<pre><code class="language-js">import { Database } from '@nozbe/watermelondb'
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
+<pre><code class="language-js">import { Database } from '@rikishi/watermelondb'
+import SQLiteAdapter from '@rikishi/watermelondb/adapters/sqlite'
 
 import schema from './model/schema'
 // import Post from './model/Post' // ⬅️ You'll import your Models here
@@ -402,7 +402,7 @@ const database = new Database({
 })
 </code></pre>
 <p>The above will work on React Native (iOS/Android) and NodeJS. For the web, instead of <code>SQLiteAdapter</code> use <code>LokiJSAdapter</code>:</p>
-<pre><code class="language-js">import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs'
+<pre><code class="language-js">import LokiJSAdapter from '@rikishi/watermelondb/adapters/lokijs'
 
 const adapter = new LokiJSAdapter({
   schema,
@@ -432,17 +432,17 @@ const adapter = new LokiJSAdapter({
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
+
                             <a rel="prev" href="ch02-00-learn-to-use.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
+
+
                             <a rel="next" href="Schema.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -450,41 +450,41 @@ const adapter = new LokiJSAdapter({
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
+
                     <a href="ch02-00-learn-to-use.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
+
+
                     <a href="Schema.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
+
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
+
+
+
+
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+
 
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
+
+
 
     </body>
 </html>
