@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Q } from '@nozbe/watermelondb';
+import { Q } from '@rikishi/watermelondb';
 import withObservables from '@nozbe/with-observables';
 
 import ListItem from './helpers/ListItem';

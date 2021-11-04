@@ -15,8 +15,8 @@
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License">
   </a>
 
-  <a href="https://www.npmjs.com/package/@nozbe/watermelondb">
-    <img src="https://img.shields.io/npm/v/@nozbe/watermelondb.svg" alt="npm">
+  <a href="https://www.npmjs.com/package/@rikishi/watermelondb">
+    <img src="https://img.shields.io/npm/v/@rikishi/watermelondb.svg" alt="npm">
   </a>
 </p>
 

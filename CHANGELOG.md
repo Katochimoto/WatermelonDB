@@ -394,7 +394,7 @@ cause all or some of user's data to be deleted. More information available via G
 - [Model] Added experimental `model.experimentalSubscribe((isDeleted) => { ... })` method as a vanilla JS alternative to Rx based `model.observe()`. Unlike the latter, it does not notify the subscriber immediately upon subscription.
 - [Collection] Added internal `collection.experimentalSubscribe((changeSet) => { ... })` method as a vanilla JS alternative to Rx based `collection.changes` (you probably shouldn't be using this API anyway)
 - [Database] Added experimental `database.experimentalSubscribe(['table1', 'table2'], () => { ... })` method as a vanilla JS alternative to Rx-based `database.withChangesForTables()`. Unlike the latter, `experimentalSubscribe` notifies the subscriber only once after a batch that makes a change in multiple collections subscribed to. It also doesn't notify the subscriber immediately upon subscription, and doesn't send details about the changes, only a signal.
-- Added `experimentalDisableObserveCountThrottling()` to `@nozbe/watermelondb/observation/observeCount` that globally disables count observation throttling. We think that throttling on WatermelonDB level is not a good feature and will be removed in a future release - and will be better implemented on app level if necessary
+- Added `experimentalDisableObserveCountThrottling()` to `@rikishi/watermelondb/observation/observeCount` that globally disables count observation throttling. We think that throttling on WatermelonDB level is not a good feature and will be removed in a future release - and will be better implemented on app level if necessary
 - [Query] Added experimental `query.experimentalSubscribe(records => { ... })`, `query.experimentalSubscribeWithColumns(['col1', 'col2'], records => { ... })`, and `query.experimentalSubscribeToCount(count => { ... })` methods
 
 ## 0.15 - 2019-11-08
@@ -528,7 +528,7 @@ Hotfix for rambdax crash
     marked as changed if the field's value is the same. This is meant to improve performance and avoid
     unnecessary code in the app. ⚠️ Note that this could be a breaking change if you rely on the old
     behavior. For now you can import `experimentalSetOnlyMarkAsChangedIfDiffers` from
-    `@nozbe/watermelondb/Model/index` and call if with `(false)` to bring the old behavior back, but
+    `@rikishi/watermelondb/Model/index` and call if with `(false)` to bring the old behavior back, but
     this will be removed in the later version -- create a new issue explaining why you need this
 - [Sync] Small perf improvements
 
@@ -540,7 +540,7 @@ Hotfix for rambdax crash
 ### Changes
 
 - [Database] You can now update the random id schema by importing
-    `import { setGenerator } from '@nozbe/watermelondb/utils/common/randomId'` and then calling `setGenerator(newGenenerator)`.
+    `import { setGenerator } from '@rikishi/watermelondb/utils/common/randomId'` and then calling `setGenerator(newGenenerator)`.
     This allows WatermelonDB to create specific IDs for example if your backend uses UUIDs.
 - [Typescript] Type improvements to SQLiteAdapter and Database
 - [Tests] remove cleanup for react-hooks-testing-library@0.5.0 compatibility
@@ -589,7 +589,7 @@ Hotfix for rambdax crash
 
 - [Hooks] new `useDatabase` hook for consuming the Database Context:
    ```js
-   import { useDatabase } from '@nozbe/watermelondb/hooks';
+   import { useDatabase } from '@rikishi/watermelondb/hooks';
    const Component = () => {
       const database = useDatabase();
    }
@@ -717,7 +717,7 @@ Hotfix for rambdax crash
 
 ### Deprecations
 
-- The `@nozbe/watermelondb/babel/cjs` / `@nozbe/watermelondb/babel/esm` Babel plugin that ships with Watermelon is deprecated and no longer necessary. Delete it from your Babel config as it will be removed in a future update
+- The `@rikishi/watermelondb/babel/cjs` / `@rikishi/watermelondb/babel/esm` Babel plugin that ships with Watermelon is deprecated and no longer necessary. Delete it from your Babel config as it will be removed in a future update
 
 ### Refactoring
 

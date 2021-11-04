@@ -4,12 +4,12 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Defining Models - WatermelonDB documentation</title>
-        
-        
+
+
 
 
         <!-- Custom HTML head -->
-        
+
 
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -17,24 +17,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
+
         <link rel="icon" href="favicon.svg">
-        
-        
+
+
         <link rel="shortcut icon" href="favicon.png">
-        
+
         <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        
+
         <link rel="stylesheet" href="css/print.css" media="print">
-        
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        
+
         <link rel="stylesheet" href="fonts/fonts.css">
-        
+
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
@@ -42,9 +42,9 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
+
+
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -103,7 +103,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
+
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -120,26 +120,26 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
+
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
+
                     </div>
 
                     <h1 class="menu-title">WatermelonDB documentation</h1>
 
                     <div class="right-buttons">
-                        
+
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
+
+
                     </div>
                 </div>
 
-                
+
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
@@ -150,7 +150,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -169,7 +169,7 @@
 <h2 id="create-a-model"><a class="header" href="#create-a-model">Create a Model</a></h2>
 <p>Let's define the <code>Post</code> model:</p>
 <pre><code class="language-js">// model/Post.js
-import { Model } from '@nozbe/watermelondb'
+import { Model } from '@rikishi/watermelondb'
 
 export default class Post extends Model {
   static table = 'posts'
@@ -205,7 +205,7 @@ class Comment extends Model {
 <p>On the &quot;parent&quot; side (<code>posts</code>) you define an equivalent <code>has_many</code> association and pass the same column name (⚠️ note that the name here is <code>foreignKey</code>).</p>
 <h2 id="add-fields"><a class="header" href="#add-fields">Add fields</a></h2>
 <p>Next, define the Model's <em>fields</em> (properties). Those correspond to <a href="./Schema.html">table columns</a> defined earlier in the schema.</p>
-<pre><code class="language-js">import { field, text } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { field, text } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   static table = 'posts'
@@ -224,7 +224,7 @@ class Post extends Model {
 <p><strong>Note:</strong> Why do I have to type the field/column name twice? The database convention is to use <code>snake_case</code> for names, and the JavaScript convention is to use camelCase. So for any multi-word name, the two differ. Also, for resiliency, we believe it's better to be explicit, because over time, you might want to refactor how you name your JavaScript field names, but column names must stay the same for backward compatibility.</p>
 <h3 id="date-fields"><a class="header" href="#date-fields">Date fields</a></h3>
 <p>For date fields, use <code>@date</code> instead of <code>@field</code>. This will return a JavaScript <code>Date</code> object (instead of Unix timestamp integer).</p>
-<pre><code class="language-js">import { date } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { date } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -233,7 +233,7 @@ class Post extends Model {
 </code></pre>
 <h3 id="derived-fields"><a class="header" href="#derived-fields">Derived fields</a></h3>
 <p>Use ES6 getters to define model properties that can be calculated based on database fields:</p>
-<pre><code class="language-js">import { field, text } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { field, text } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   static table = 'posts'
@@ -249,7 +249,7 @@ class Post extends Model {
 </code></pre>
 <h3 id="to-one-relation-fields"><a class="header" href="#to-one-relation-fields">To-one relation fields</a></h3>
 <p>To point to a related record, e.g. <code>Post</code> a <code>Comment</code> belongs to, or author (<code>User</code>) of a <code>Comment</code>, use <code>@relation</code> or <code>@immutableRelation</code>:</p>
-<pre><code class="language-js">import { relation, immutableRelation } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { relation, immutableRelation } from '@rikishi/watermelondb/decorators'
 
 class Comment extends Model {
   // ...
@@ -260,7 +260,7 @@ class Comment extends Model {
 <p><strong>➡️ Learn more:</strong> <a href="./Relation.html">Relation API</a></p>
 <h3 id="children-to-many-relation-fields"><a class="header" href="#children-to-many-relation-fields">Children (to-many relation fields)</a></h3>
 <p>To point to a list of records that belong to this Model, e.g. all <code>Comment</code>s that belong to a <code>Post</code>, you can define a simple <code>Query</code> using <code>@children</code>:</p>
-<pre><code class="language-js">import { children } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { children } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   static table = 'posts'
@@ -276,8 +276,8 @@ class Post extends Model {
 <p><strong>➡️ Learn more:</strong> <a href="./Query.html">Queries</a></p>
 <h3 id="custom-queries"><a class="header" href="#custom-queries">Custom Queries</a></h3>
 <p>In addition to <code>@children</code>, you can define custom Queries or extend existing ones, for example:</p>
-<pre><code class="language-js">import { children } from '@nozbe/watermelondb/decorators'
-import { Q } from '@nozbe/watermelondb'
+<pre><code class="language-js">import { children } from '@rikishi/watermelondb/decorators'
+import { Q } from '@rikishi/watermelondb'
 
 class Post extends Model {
   static table = 'posts'
@@ -294,7 +294,7 @@ class Post extends Model {
 <p><strong>➡️ Learn more:</strong> <a href="./Query.html">Queries</a></p>
 <h3 id="writer-methods"><a class="header" href="#writer-methods">Writer methods</a></h3>
 <p>Define <strong>writers</strong> to simplify creating and updating records, for example:</p>
-<pre><code class="language-js">import { writer } from '@nozbe/watermelondb/decorators'
+<pre><code class="language-js">import { writer } from '@rikishi/watermelondb/decorators'
 
 class Comment extends Model {
   static table = 'comments'
@@ -327,17 +327,17 @@ class Comment extends Model {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
+
                             <a rel="prev" href="Schema.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
+
+
                             <a rel="next" href="CRUD.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
+
 
                         <div style="clear: both"></div>
                     </nav>
@@ -345,49 +345,49 @@ class Comment extends Model {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
+
                     <a rel="prev" href="Schema.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
+
+
                     <a rel="next" href="CRUD.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
+
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
+
+
+
+
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
+
+
+
         <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
-        
+
 
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
+
+
 
     </body>
 </html>

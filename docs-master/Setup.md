@@ -5,7 +5,7 @@ Make sure you [installed Watermelon](./Installation.md) before proceeding.
 Create `model/schema.js` in your project. You'll need it for [the next step](./Schema.md).
 
 ```js
-import { appSchema, tableSchema } from '@nozbe/watermelondb'
+import { appSchema, tableSchema } from '@rikishi/watermelondb'
 
 export default appSchema({
   version: 1,
@@ -18,7 +18,7 @@ export default appSchema({
 Similarly, create `model/migrations.js`. ([More information about migrations](./Advanced/Migrations.md)):
 
 ```js
-import { schemaMigrations } from '@nozbe/watermelondb/Schema/migrations'
+import { schemaMigrations } from '@rikishi/watermelondb/Schema/migrations'
 
 export default schemaMigrations({
   migrations: [
@@ -31,8 +31,8 @@ Now, in your `index.native.js`:
 
 ```js
 import { Platform } from 'react-native'
-import { Database } from '@nozbe/watermelondb'
-import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite'
+import { Database } from '@rikishi/watermelondb'
+import SQLiteAdapter from '@rikishi/watermelondb/adapters/sqlite'
 
 import schema from './model/schema'
 import migrations from './model/migrations'
@@ -66,7 +66,7 @@ const database = new Database({
 The above will work on React Native (iOS/Android) and NodeJS. For the web, instead of `SQLiteAdapter` use `LokiJSAdapter`:
 
 ```js
-import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs'
+import LokiJSAdapter from '@rikishi/watermelondb/adapters/lokijs'
 
 const adapter = new LokiJSAdapter({
   schema,

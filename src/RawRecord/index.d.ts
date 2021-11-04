@@ -1,6 +1,6 @@
-declare module '@nozbe/watermelondb/RawRecord' {
-  import { ColumnName, ColumnSchema, RecordId, TableSchema } from '@nozbe/watermelondb'
-  import { SyncStatus } from '@nozbe/watermelondb/Model'
+declare module '@rikishi/watermelondb/RawRecord' {
+  import { ColumnName, ColumnSchema, RecordId, TableSchema } from '@rikishi/watermelondb'
+  import { SyncStatus } from '@rikishi/watermelondb/Model'
 
   export type DirtyRaw = { [id: string]: any }
 

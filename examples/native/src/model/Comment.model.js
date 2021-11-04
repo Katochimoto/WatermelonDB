@@ -1,5 +1,5 @@
-import { Model } from '@nozbe/watermelondb';
-import { field, relation } from '@nozbe/watermelondb/decorators';
+import { Model } from '@rikishi/watermelondb';
+import { field, relation } from '@rikishi/watermelondb/decorators';
 
 export class Comment extends Model {
   static table = 'comments';

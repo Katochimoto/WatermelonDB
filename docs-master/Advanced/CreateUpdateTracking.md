@@ -37,7 +37,7 @@ tableSchema({
 **Step 2:** Add this to the Model definition:
 
 ```js
-import { date, readonly } from '@nozbe/watermelondb/decorators'
+import { date, readonly } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { HashRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import { generate100, generate10k } from 'models/generate'
-import { withDatabase } from '@nozbe/watermelondb/DatabaseProvider'
+import { withDatabase } from '@rikishi/watermelondb/DatabaseProvider'
 
 import Button from 'components/Button'
 import BlogList from 'components/BlogList'

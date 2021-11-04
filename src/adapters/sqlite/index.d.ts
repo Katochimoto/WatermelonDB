@@ -1,4 +1,4 @@
-declare module '@nozbe/watermelondb/adapters/sqlite' {
+declare module '@rikishi/watermelondb/adapters/sqlite' {
   import {
     AppSchema,
     DatabaseAdapter,
@@ -6,13 +6,13 @@ declare module '@nozbe/watermelondb/adapters/sqlite' {
     Query,
     RecordId,
     TableName,
-  } from '@nozbe/watermelondb'
+  } from '@rikishi/watermelondb'
   import {
     BatchOperation,
     CachedFindResult,
     CachedQueryResult,
-  } from '@nozbe/watermelondb/adapters/type'
-  import { SchemaMigrations } from '@nozbe/watermelondb/Schema/migrations'
+  } from '@rikishi/watermelondb/adapters/type'
+  import { SchemaMigrations } from '@rikishi/watermelondb/Schema/migrations'
 
   export type SQL = string
 

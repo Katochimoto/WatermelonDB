@@ -1,6 +1,6 @@
-declare module '@nozbe/watermelondb/sync' {
-  import { DirtyRaw, RecordId, TableName, Model, Database } from '@nozbe/watermelondb'
-  import { Migration } from '@nozbe/watermelondb/Schema/migrations'
+declare module '@rikishi/watermelondb/sync' {
+  import { DirtyRaw, RecordId, TableName, Model, Database } from '@rikishi/watermelondb'
+  import { Migration } from '@rikishi/watermelondb/Schema/migrations'
 
   export type Timestamp = number
 

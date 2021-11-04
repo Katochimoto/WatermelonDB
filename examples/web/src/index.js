@@ -3,9 +3,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import { Database } from '@nozbe/watermelondb'
-import LokiJSAdapter from '@nozbe/watermelondb/adapters/lokijs'
-import DatabaseProvider from '@nozbe/watermelondb/DatabaseProvider'
+import { Database } from '@rikishi/watermelondb'
+import LokiJSAdapter from '@rikishi/watermelondb/adapters/lokijs'
+import DatabaseProvider from '@rikishi/watermelondb/DatabaseProvider'
 
 import { mySchema } from 'models/schema'
 import Blog from 'models/Blog'

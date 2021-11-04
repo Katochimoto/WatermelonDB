@@ -33,7 +33,7 @@ const newPost = await database.write(async => {
 Writer methods can be defined on `Model` subclasses by using the `@writer` decorator:
 
 ```js
-import { writer } from '@nozbe/watermelondb/decorators'
+import { writer } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...

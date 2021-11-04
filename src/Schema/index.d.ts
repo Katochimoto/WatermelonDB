@@ -1,5 +1,5 @@
-declare module '@nozbe/watermelondb/Schema' {
-  import { Model } from '@nozbe/watermelondb'
+declare module '@rikishi/watermelondb/Schema' {
+  import { Model } from '@rikishi/watermelondb'
 
   export type SchemaVersion = number
 

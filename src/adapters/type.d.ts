@@ -1,5 +1,5 @@
-declare module '@nozbe/watermelondb/adapters/type' {
-  import { AppSchema, Model, Query, RawRecord, RecordId, TableName } from '@nozbe/watermelondb'
+declare module '@rikishi/watermelondb/adapters/type' {
+  import { AppSchema, Model, Query, RawRecord, RecordId, TableName } from '@rikishi/watermelondb'
 
   export type CachedFindResult = RecordId | (RawRecord | void)
   export type CachedQueryResult = Array<RecordId | RawRecord>

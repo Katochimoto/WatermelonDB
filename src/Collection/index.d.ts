@@ -1,7 +1,7 @@
-declare module '@nozbe/watermelondb/Collection' {
-  import { Database, Model, Query, RecordId, TableName, TableSchema } from '@nozbe/watermelondb'
-  import { Clause } from '@nozbe/watermelondb/QueryDescription'
-  import { Class } from '@nozbe/watermelondb/utils/common'
+declare module '@rikishi/watermelondb/Collection' {
+  import { Database, Model, Query, RecordId, TableName, TableSchema } from '@rikishi/watermelondb'
+  import { Clause } from '@rikishi/watermelondb/QueryDescription'
+  import { Class } from '@rikishi/watermelondb/utils/common'
   import { Observable, Subject } from 'rxjs'
 
   type CollectionChangeType = 'created' | 'updated' | 'destroyed'

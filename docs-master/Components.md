@@ -267,7 +267,7 @@ const enhance = withObservables(['post'], ({post}) => ({
 To prevent prop drilling you can use the Database Provider and the `withDatabase` Higher-Order Component.
 
 ```jsx
-import DatabaseProvider from '@nozbe/watermelondb/DatabaseProvider'
+import DatabaseProvider from '@rikishi/watermelondb/DatabaseProvider'
 
 // ...
 
@@ -287,7 +287,7 @@ render(
 To consume the database in your components you just wrap your component like so:
 
 ```jsx
-import { withDatabase } from '@nozbe/watermelondb/DatabaseProvider'
+import { withDatabase } from '@rikishi/watermelondb/DatabaseProvider'
 import { compose } from 'recompose'
 
 // ...
@@ -308,7 +308,7 @@ The database prop in the `withObservables` Higher-Order Component is provided by
 You can also consume `Database` object using React Hooks syntax:
 
 ```js
-import { useDatabase } from '@nozbe/watermelondb/hooks'
+import { useDatabase } from '@rikishi/watermelondb/hooks'
 
 const Component = () => {
    const database = useDatabase()

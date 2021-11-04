@@ -28,8 +28,8 @@ class Post extends Model {
 To **narrow down** a `Query` (add [extra conditions](#query-conditions) to an existing Query), use `.extend()`:
 
 ```js
-import { Q } from '@nozbe/watermelondb'
-import { children, lazy } from '@nozbe/watermelondb/decorators'
+import { Q } from '@rikishi/watermelondb'
+import { children, lazy } from '@rikishi/watermelondb/decorators'
 
 class Post extends Model {
   // ...
@@ -52,7 +52,7 @@ class Post extends Model {
 You can query any table like so:
 
 ```js
-import { Q } from '@nozbe/watermelondb'
+import { Q } from '@rikishi/watermelondb'
 
 const users = await database.get('users').query(
   // conditions that a user must match:
@@ -103,7 +103,7 @@ const verifiedCommentCount = await post.verifiedComments.count
 ## Query conditions
 
 ```js
-import { Q } from '@nozbe/watermelondb'
+import { Q } from '@rikishi/watermelondb'
 // ...
 database.get('comments').query(
   Q.where('is_verified', true)

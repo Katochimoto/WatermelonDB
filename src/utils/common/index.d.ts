@@ -1,4 +1,4 @@
-declare module '@nozbe/watermelondb/utils/common' {
+declare module '@rikishi/watermelondb/utils/common' {
   /**
    * Class
    * @desc Represents constructor of type T

@@ -1,5 +1,5 @@
-declare module '@nozbe/watermelondb/decorators/immutableRelation' {
-  import { ColumnName, TableName } from '@nozbe/watermelondb'
+declare module '@rikishi/watermelondb/decorators/immutableRelation' {
+  import { ColumnName, TableName } from '@rikishi/watermelondb'
 
   const immutableRelation: (
     relationTable: TableName<any>,

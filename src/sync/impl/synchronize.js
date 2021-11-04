@@ -32,11 +32,80 @@ export default async function synchronize({
 
   // TODO: Wrap the three computionally intensive phases in `requestIdleCallback`
 
+  const saveRemoteChanges = async ({
+    lastPulledAt,
+    schemaVersion,
+    shouldSaveSchemaVersion,
+    ...syncChanges
+  }) => {
+    let newLastPulledAt: Timestamp = (syncChanges: any).timestamp
+
+    await database.write(async () => {
+      ensureSameDatabase(database, resetCount)
+      invariant(
+        lastPulledAt === (await getLastPulledAt(database)),
+        '[Sync] Concurrent synchronization is not allowed. More than one synchronize() call was running at the same time, and the later one was aborted before committing results to local database.',
+      )
+
+      if (unsafeTurbo) {
+        invariant(
+          !_unsafeBatchPerCollection,
+          'unsafeTurbo must not be used with _unsafeBatchPerCollection',
+        )
+        invariant(
+          'syncJson' in syncChanges || 'syncJsonId' in syncChanges,
+          'missing syncJson/syncJsonId',
+        )
+        invariant(lastPulledAt === null, 'unsafeTurbo can only be used as the first sync')
+
+        const syncJsonId = syncChanges.syncJsonId || Math.floor(Math.random() * 1000000000)
+
+        if (syncChanges.syncJson) {
+          await database.adapter.provideSyncJson(syncJsonId, syncChanges.syncJson)
+        }
+
+        const resultRest = await database.adapter.unsafeLoadFromSync(syncJsonId)
+        newLastPulledAt = resultRest.timestamp
+        onDidPullChanges && onDidPullChanges(resultRest)
+      }
+
+      log && (log.newLastPulledAt = newLastPulledAt)
+      invariant(
+        typeof newLastPulledAt === 'number' && newLastPulledAt > 0,
+        `pullChanges() returned invalid timestamp ${newLastPulledAt}. timestamp must be a non-zero number`,
+      )
+
+      if (!unsafeTurbo) {
+        // $FlowFixMe
+        const { changes: remoteChanges, ...resultRest } = syncChanges
+        log && (log.remoteChangeCount = changeSetCount(remoteChanges))
+        await applyRemoteChanges(
+          database,
+          remoteChanges,
+          sendCreatedAsUpdated,
+          log,
+          conflictResolver,
+          _unsafeBatchPerCollection,
+        )
+        onDidPullChanges && onDidPullChanges(resultRest)
+      }
+
+      log && (log.phase = 'applied remote changes')
+      await setLastPulledAt(database, newLastPulledAt)
+
+      if (shouldSaveSchemaVersion) {
+        await setLastPulledSchemaVersion(database, schemaVersion)
+      }
+    }, 'sync-synchronize-apply')
+
+    return { newLastPulledAt }
+  }
+
   // pull phase
   const lastPulledAt = await getLastPulledAt(database)
   log && (log.lastPulledAt = lastPulledAt)
 
-  const { schemaVersion, migration, shouldSaveSchemaVersion } = await getMigrationInfo(
+  const migrationInfo = await getMigrationInfo(
     database,
     log,
     lastPulledAt,
@@ -47,70 +116,14 @@ export default async function synchronize({
   // $FlowFixMe
   const pullResult = await pullChanges({
     lastPulledAt,
-    schemaVersion,
-    migration,
+    schemaVersion: migrationInfo.schemaVersion,
+    migration: migrationInfo.migration,
   })
   log && (log.phase = 'pulled')
 
-  let newLastPulledAt: Timestamp = (pullResult: any).timestamp
-
-  await database.write(async () => {
-    ensureSameDatabase(database, resetCount)
-    invariant(
-      lastPulledAt === (await getLastPulledAt(database)),
-      '[Sync] Concurrent synchronization is not allowed. More than one synchronize() call was running at the same time, and the later one was aborted before committing results to local database.',
-    )
-
-    if (unsafeTurbo) {
-      invariant(
-        !_unsafeBatchPerCollection,
-        'unsafeTurbo must not be used with _unsafeBatchPerCollection',
-      )
-      invariant(
-        'syncJson' in pullResult || 'syncJsonId' in pullResult,
-        'missing syncJson/syncJsonId',
-      )
-      invariant(lastPulledAt === null, 'unsafeTurbo can only be used as the first sync')
-
-      const syncJsonId = pullResult.syncJsonId || Math.floor(Math.random() * 1000000000)
-
-      if (pullResult.syncJson) {
-        await database.adapter.provideSyncJson(syncJsonId, pullResult.syncJson)
-      }
-
-      const resultRest = await database.adapter.unsafeLoadFromSync(syncJsonId)
-      newLastPulledAt = resultRest.timestamp
-      onDidPullChanges && onDidPullChanges(resultRest)
-    }
-
-    log && (log.newLastPulledAt = newLastPulledAt)
-    invariant(
-      typeof newLastPulledAt === 'number' && newLastPulledAt > 0,
-      `pullChanges() returned invalid timestamp ${newLastPulledAt}. timestamp must be a non-zero number`,
-    )
-
-    if (!unsafeTurbo) {
-      // $FlowFixMe
-      const { changes: remoteChanges, ...resultRest } = pullResult
-      log && (log.remoteChangeCount = changeSetCount(remoteChanges))
-      await applyRemoteChanges(
-        database,
-        remoteChanges,
-        sendCreatedAsUpdated,
-        log,
-        conflictResolver,
-        _unsafeBatchPerCollection,
-      )
-      onDidPullChanges && onDidPullChanges(resultRest)
-    }
-
-    log && (log.phase = 'applied remote changes')
-    await setLastPulledAt(database, newLastPulledAt)
-
-    if (shouldSaveSchemaVersion) {
-      await setLastPulledSchemaVersion(database, schemaVersion)
-    }
-  }, 'sync-synchronize-apply')
+  const { newLastPulledAt } = await saveRemoteChanges(
+    Object.assign({ lastPulledAt }, pullResult, migrationInfo),
+  )
 
   // push phase
   if (pushChanges) {
@@ -131,6 +144,10 @@ export default async function synchronize({
       ensureSameDatabase(database, resetCount)
       await markLocalChangesAsSynced(database, localChanges, pushResult.experimentalRejectedIds)
       log && (log.phase = 'marked local changes as synced')
+
+      if (pushResult && pushResult.timestamp) {
+        await saveRemoteChanges(Object.assign({ lastPulledAt: newLastPulledAt }, pushResult))
+      }
     }
   } else {
     log && (log.phase = 'pushChanges not defined')

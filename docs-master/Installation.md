@@ -3,10 +3,10 @@
 First, add Watermelon to your project:
 
 ```bash
-yarn add @nozbe/watermelondb
+yarn add @rikishi/watermelondb
 
 # (or with npm:)
-npm install @nozbe/watermelondb
+npm install @rikishi/watermelondb
 ```
 
 ## React Native setup
@@ -48,7 +48,7 @@ npm install @nozbe/watermelondb
 
     ```ruby
     # If you're using autolinking, this line might not be needed
-    pod 'WatermelonDB', :path => '../node_modules/@nozbe/watermelondb'
+    pod 'WatermelonDB', :path => '../node_modules/@rikishi/watermelondb'
 
     # NOTE: Do not remove, needed to keep WatermelonDB compiling:
     pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi', :modular_headers => true
@@ -72,7 +72,7 @@ npm install @nozbe/watermelondb
     #import <React/RCTBridgeModule.h>
 
     // Silence warning
-    #import "../../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB/SupportingFiles/Bridging.h"
+    #import "../../node_modules/@rikishi/watermelondb/native/ios/WatermelonDB/SupportingFiles/Bridging.h"
     ```
 
     You might have to tweak the import path to correctly locate Watermelon's bridging header.
@@ -95,7 +95,7 @@ On RN60+, auto linking should work.
   ```gradle
   include ':watermelondb'
   project(':watermelondb').projectDir =
-      new File(rootProject.projectDir, '../node_modules/@nozbe/watermelondb/native/android')
+      new File(rootProject.projectDir, '../node_modules/@rikishi/watermelondb/native/android')
   ```
 
   2. In `android/app/build.gradle`, add:
@@ -153,7 +153,7 @@ On RN60+, auto linking should work.
       ```gradle
       include ':watermelondb-jsi'
       project(':watermelondb-jsi').projectDir =
-          new File(rootProject.projectDir, '../node_modules/@nozbe/watermelondb/native/android-jsi')
+          new File(rootProject.projectDir, '../node_modules/@rikishi/watermelondb/native/android-jsi')
       ```
    2. In `android/app/build.gradle`, add:
       ```gradle

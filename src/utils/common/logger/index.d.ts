@@ -1,4 +1,4 @@
-declare module '@nozbe/watermelondb/utils/common/logger' {
+declare module '@rikishi/watermelondb/utils/common/logger' {
   class Logger {
     log(...messages: any[]): void
 

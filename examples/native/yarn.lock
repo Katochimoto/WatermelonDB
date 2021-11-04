@@ -1054,9 +1054,9 @@
   resolved "https://registry.yarnpkg.com/@nozbe/sqlite/-/sqlite-3.31.1.tgz"
   integrity sha512-z5+GdcHZl9OQ1g0pnygORAnwCYUlYw/gQxdW/8rS0HxD2Gnn/k3DBQOvqQIH4Z3Z3KWVMbGUYhcH1v4SqTAdwg==
 
-"@nozbe/watermelondb@^0.21.0":
+"@rikishi/watermelondb@^0.21.0":
   version "0.21.0"
-  resolved "https://registry.yarnpkg.com/@nozbe/watermelondb/-/watermelondb-0.21.0.tgz#07cb01cea2609117d51242963445ae1d8145633f"
+  resolved "https://registry.yarnpkg.com/@rikishi/watermelondb/-/watermelondb-0.21.0.tgz#07cb01cea2609117d51242963445ae1d8145633f"
   integrity sha512-ugTViv44aQt+fXXkCaX6PeObvS02u7RR2HwChnLAG3tEm3oIPwn1X9Hquogmw7FLUeXnChJfevATyCuPF/Tobg==
   dependencies:
     "@babel/runtime" "^7.11.2"
