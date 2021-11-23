@@ -121,6 +121,7 @@ declare module '@rikishi/watermelondb/QueryDescription' {
   export function sanitizeLikeString(value: string): string
   export function unsafeSqlExpr(sql: string): Sql
   export function unsafeSqlQuery(sql: string): SqlQuery
+  export function unsafeLokiTransform(fn: LokiTransformFunction): LokiTransform
 
   type _OnFunctionColumnValue = (table: TableName<any>, column: ColumnName, value: Value) => On
   type _OnFunctionColumnComparison = (
